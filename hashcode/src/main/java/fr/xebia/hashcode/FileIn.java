@@ -35,13 +35,13 @@ public class FileIn {
 
                 int j = 0;
                 while (sc.hasNext()) {
-
                     Position startPosition = new Position(sc.nextInt(), sc.nextInt());
                     Position stopPosition = new Position(sc.nextInt(), sc.nextInt());
                     int earliestStart = sc.nextInt();
                     int latestFinish = sc.nextInt();
-                    Ride ride = new Ride(startPosition, stopPosition, earliestStart, latestFinish);
+                    Ride ride = new Ride(j, startPosition, stopPosition, earliestStart, latestFinish);
                     rideList.add(ride);
+                    j++;
                 }
 
             }
