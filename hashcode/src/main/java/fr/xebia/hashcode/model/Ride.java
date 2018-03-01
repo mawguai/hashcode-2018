@@ -9,6 +9,7 @@ public class Ride {
     private int earliestStart;
     private int latestFinish;
     private Integer distance;
+    private boolean excluded;
 
     public Ride(int id, Position start, Position stop, int earliestStart, int latestFinish) {
         this.id = id;
@@ -17,6 +18,7 @@ public class Ride {
         this.earliestStart = earliestStart;
         this.latestFinish = latestFinish;
         this.computeDistance();
+        this.excluded = false;
     }
 
     public int getId() {
@@ -77,5 +79,13 @@ public class Ride {
                 ", earliestStart=" + earliestStart +
                 ", latestFinish=" + latestFinish +
                 '}';
+    }
+
+    public boolean isExcluded() {
+        return excluded;
+    }
+
+    public void setExcluded(boolean excluded) {
+        this.excluded = excluded;
     }
 }
