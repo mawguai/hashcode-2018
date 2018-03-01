@@ -1,6 +1,5 @@
 package fr.xebia.hashcode;
 
-
 import java.net.URL;
 import java.util.Arrays;
 

@@ -75,6 +75,4 @@ hs_err_pid*
 .idea/misc.xml
 .idea/modules.xml
 .idea/vcs.xml
-hashcode/src/main/resources/
-hashcode/src/test/
-hashcode/target/
+**/target/
