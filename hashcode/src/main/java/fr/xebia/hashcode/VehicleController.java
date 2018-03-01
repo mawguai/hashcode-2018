@@ -8,8 +8,13 @@ import java.util.List;
 
 public class VehicleController {
 
-    public void orchestrator() {
-
+    public void orchestrator(List<Vehicle> vehicles, List<Ride> rides) {
+        for (Ride ride : rides) {
+            Vehicle vehicle = determineClosestFreeVehicle(ride, vehicles);
+            if (vehicle != null) {
+                vehicle.setCurrentRide(ride);
+            }
+        }
     }
 
     private Vehicle determineClosestFreeVehicle(Ride ride, List<Vehicle> vehicles) {

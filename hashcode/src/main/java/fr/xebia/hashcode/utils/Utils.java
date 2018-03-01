@@ -1,6 +1,9 @@
 package fr.xebia.hashcode.utils;
 
 import fr.xebia.hashcode.model.Position;
+import fr.xebia.hashcode.model.Ride;
+
+import java.util.List;
 
 public class Utils {
 

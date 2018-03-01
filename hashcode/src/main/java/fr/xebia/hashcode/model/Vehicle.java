@@ -1,5 +1,7 @@
 package fr.xebia.hashcode.model;
 
+import fr.xebia.hashcode.utils.Utils;
+
 import java.util.List;
 
 public class Vehicle {
@@ -70,5 +72,8 @@ public class Vehicle {
 
     public void setCurrentRide(Ride currentRide) {
         this.currentRide = currentRide;
+        this.setRemainingStep(currentRide.getDistance() + Utils.getDistance(this.position, currentRide.getStart()));
+        this.setOnRide(true);
+        this.position = currentRide.getStart();
     }
 }
