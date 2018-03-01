@@ -1,9 +1,14 @@
 package fr.xebia.hashcode;
 
+
+import java.util.Arrays;
+
 public class HashCodeApp {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!"); // Display the string.
+        FileIn fileIn = new FileIn("/Users/Maxime/IdeaProjects/hashcode-2018/hashcode/src/resources/example.in");
+        Arrays.stream(fileIn.content).forEach(System.out::println);
+
     }
 
 }
