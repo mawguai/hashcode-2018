@@ -31,6 +31,10 @@ public class VehicleController {
             while (iterator.hasNext()) {
                 Ride ride = iterator.next();
                 ride.decrementTurn();
+                if (ride.getDistance() > ride.getLatestFinish()) {
+                    iterator.remove();
+                    continue;
+                }
                 Vehicle vehicle = determineClosestFreeVehicle(ride, vehicles);
                 if (vehicle != null) {
                     vehicle.setCurrentRide(ride);
