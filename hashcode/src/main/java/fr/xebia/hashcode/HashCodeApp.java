@@ -1,12 +1,8 @@
 package fr.xebia.hashcode;
 
-import fr.xebia.hashcode.model.Position;
-import fr.xebia.hashcode.model.Ride;
 import fr.xebia.hashcode.model.Vehicle;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class HashCodeApp {
