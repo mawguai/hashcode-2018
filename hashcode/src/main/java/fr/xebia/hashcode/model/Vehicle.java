@@ -19,9 +19,11 @@ public class Vehicle {
     }
 
     public void switchToNextRide() {
+        treatedRides.add(currentRide);
+        currentRide = null;
+        onRide = false;
         if (!nextRides.isEmpty()) {
-            treatedRides.add(currentRide);
-            currentRide = nextRides.get(0);
+            setCurrentRide(nextRides.get(0));
             nextRides.remove(0);
         }
     }
@@ -70,10 +72,21 @@ public class Vehicle {
         return currentRide;
     }
 
+    public void decrementRemainingStep() {
+        if (remainingStep > 0) {
+            this.remainingStep--;
+            if (remainingStep == 0) {
+                switchToNextRide();
+            }
+        } else {
+            throw new IllegalStateException();
+        }
+    }
+
     public void setCurrentRide(Ride currentRide) {
         this.currentRide = currentRide;
         this.setRemainingStep(currentRide.getDistance() + Utils.getDistance(this.position, currentRide.getStart()));
         this.setOnRide(true);
-        this.position = currentRide.getStart();
+        this.position = currentRide.getStop();
     }
 }
