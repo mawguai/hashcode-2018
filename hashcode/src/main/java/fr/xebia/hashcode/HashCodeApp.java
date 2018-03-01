@@ -10,7 +10,6 @@ public class HashCodeApp {
          URL path = HashCodeApp.class.getResource("/a_example.in");
         FileIn fileIn = new FileIn(path.getPath());
         fileIn.getRideList().forEach(System.out::println);
-
     }
 
 }
