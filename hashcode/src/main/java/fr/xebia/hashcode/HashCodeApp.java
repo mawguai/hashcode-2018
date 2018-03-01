@@ -12,7 +12,7 @@ import java.util.List;
 public class HashCodeApp {
 
     public static void main(String[] args) {
-        URL path = HashCodeApp.class.getResource("/c_no_hurry.in");
+        URL path = HashCodeApp.class.getResource("/e_high_bonus.in");
         FileIn fileIn = new FileIn(path.getPath());
         //fileIn.getRideList().forEach(System.out::println);
 
@@ -41,7 +41,7 @@ public class HashCodeApp {
 //        vehicles.add(vehicle1);
 //        vehicles.add(vehicle2);
 
-        FileOut.generateFileOut(vehicleList, "/Users/Maxime/IdeaProjects/hashcode-2018/hashcode/src/main/resources/out_c.txt");
+        FileOut.generateFileOut(vehicleList, "D:\\Olivier\\workspace\\IdeaProjects\\hashcode-2018\\hashcode\\src\\main\\resources\\e_high_bonus.out");
     }
 
 }

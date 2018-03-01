@@ -22,6 +22,7 @@ public class VehicleController {
 
     public List<Vehicle> orchestrator(List<Ride> rides, int nbSteps) {
         for (int i = 1; i <= nbSteps; i++) {
+            if (i % 1000 == 0) System.out.println(i);
             vehicles.stream()
                     .filter(Vehicle::isOnRide)
                     .forEach(Vehicle::decrementRemainingStep);
