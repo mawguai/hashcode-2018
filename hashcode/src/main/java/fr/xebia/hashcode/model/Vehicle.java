@@ -2,17 +2,22 @@ package fr.xebia.hashcode.model;
 
 import fr.xebia.hashcode.utils.Utils;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Vehicle {
+    private int id;
     private Position position;
     private boolean onRide;
     private int remainingStep;
     private Ride currentRide;
-    private List<Ride> treatedRides;
-    private List<Ride> nextRides;
+    private List<Ride> treatedRides = new ArrayList<>();
+    private List<Ride> nextRides = new ArrayList<>();
 
-    public Vehicle(Position position, boolean onRide, int remainingStep) {
+
+    public Vehicle(int id, Position position, boolean onRide, int remainingStep) {
+        this.id = id;
         this.position = position;
         this.onRide = onRide;
         this.remainingStep = remainingStep;
@@ -72,10 +77,19 @@ public class Vehicle {
         return currentRide;
     }
 
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void decrementRemainingStep() {
         if (remainingStep > 0) {
             this.remainingStep--;
-            if (remainingStep == 0) {
+            if (remainingStep == 0 && currentRide != null) {
                 switchToNextRide();
             }
         } else {
@@ -88,5 +102,25 @@ public class Vehicle {
         this.setRemainingStep(currentRide.getDistance() + Utils.getDistance(this.position, currentRide.getStart()));
         this.setOnRide(true);
         this.position = currentRide.getStop();
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "position=" + position +
+                ", onRide=" + onRide +
+                ", remainingStep=" + remainingStep +
+                ", currentRide=" + currentRide +
+                ", treatedRides=" + treatedRides +
+                ", nextRides=" + nextRides +
+                '}';
+    }
+
+    public String resultString(){
+        String result = id + "";
+        for(Ride ride : treatedRides){
+            result += " " + ride.getRideNb();
+        }
+        return result;
     }
 }
