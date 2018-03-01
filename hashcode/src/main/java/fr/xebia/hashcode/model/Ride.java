@@ -53,6 +53,11 @@ public class Ride {
         this.computeDistance();
     }
 
+    public void decrementTurn() {
+        earliestStart--;
+        latestFinish--;
+    }
+
     public int getEarliestStart() {
         return earliestStart;
     }

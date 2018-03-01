@@ -30,6 +30,7 @@ public class VehicleController {
             Iterator<Ride> iterator = rides.iterator();
             while (iterator.hasNext()) {
                 Ride ride = iterator.next();
+                ride.decrementTurn();
                 Vehicle vehicle = determineClosestFreeVehicle(ride, vehicles);
                 if (vehicle != null) {
                     vehicle.setCurrentRide(ride);
@@ -43,10 +44,7 @@ public class VehicleController {
 
     private Vehicle determineClosestFreeVehicle(Ride ride, List<Vehicle> vehicles) {
         return vehicles.stream()
-                .filter(vh -> !vh.isOnRide()).min(Comparator.comparing(vh2 -> Utils.getDistance(vh2.getPosition(), ride.getStart())))
+                .filter(vh -> !vh.isOnRide()).min(Comparator.comparing(vh2 -> Utils.getDistanceFromRide(vh2.getPosition(), ride)))
                 .orElse(null);
     }
-
-
-
 }

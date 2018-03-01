@@ -11,4 +11,13 @@ public class Utils {
         return Math.abs(p1.getX() - p2.getX()) + Math.abs(p1.getY() - p2.getY());
     }
 
+    public static Integer getDistanceFromRide(Position p1, Ride ride) {
+        Integer distanceFromStart = getDistance(p1, ride.getStart());
+        if (distanceFromStart < ride.getEarliestStart()) {
+            return ride.getEarliestStart();
+        } else {
+            return distanceFromStart;
+        }
+    }
+
 }
