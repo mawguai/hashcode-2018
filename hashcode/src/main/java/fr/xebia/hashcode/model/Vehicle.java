@@ -6,13 +6,22 @@ public class Vehicle {
     private Position position;
     private boolean onRide;
     private int remainingStep;
-    private List<Ride> rides;
+    private Ride currentRide;
+    private List<Ride> treatedRides;
+    private List<Ride> nextRides;
 
-    public Vehicle(Position position, boolean onRide, int remainingStep, List<Ride> rides) {
+    public Vehicle(Position position, boolean onRide, int remainingStep) {
         this.position = position;
         this.onRide = onRide;
         this.remainingStep = remainingStep;
-        this.rides = rides;
+    }
+
+    public void switchToNextRide() {
+        if (!nextRides.isEmpty()) {
+            treatedRides.add(currentRide);
+            currentRide = nextRides.get(0);
+            nextRides.remove(0);
+        }
     }
 
     public Position getPosition() {
@@ -39,11 +48,27 @@ public class Vehicle {
         this.remainingStep = remainingStep;
     }
 
-    public List<Ride> getRides() {
-        return rides;
+    public List<Ride> getTreatedRides() {
+        return treatedRides;
     }
 
-    public void setRides(List<Ride> rides) {
-        this.rides = rides;
+    public void setTreatedRides(List<Ride> treatedRides) {
+        this.treatedRides = treatedRides;
+    }
+
+    public List<Ride> getNextRides() {
+        return nextRides;
+    }
+
+    public void setNextRides(List<Ride> nextRides) {
+        this.nextRides = nextRides;
+    }
+
+    public Ride getCurrentRide() {
+        return currentRide;
+    }
+
+    public void setCurrentRide(Ride currentRide) {
+        this.currentRide = currentRide;
     }
 }
