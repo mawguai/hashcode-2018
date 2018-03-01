@@ -1,4 +1,4 @@
-package fr.xebia.hashcode;
+package fr.xebia.hashcode.model;
 
 public class Ride {
     private Position start;

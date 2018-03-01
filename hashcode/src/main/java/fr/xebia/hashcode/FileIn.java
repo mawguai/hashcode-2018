@@ -1,6 +1,7 @@
 package fr.xebia.hashcode;
 
-import javafx.geometry.Pos;
+import fr.xebia.hashcode.model.Position;
+import fr.xebia.hashcode.model.Ride;
 
 import java.io.File;
 import java.util.ArrayList;

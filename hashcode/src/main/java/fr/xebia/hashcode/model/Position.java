@@ -1,4 +1,4 @@
-package fr.xebia.hashcode;
+package fr.xebia.hashcode.model;
 
 public class Position {
     private int x;
