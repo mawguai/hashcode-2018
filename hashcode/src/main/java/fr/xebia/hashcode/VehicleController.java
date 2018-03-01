@@ -22,6 +22,7 @@ public class VehicleController {
 
     public List<Vehicle> orchestrator(List<Ride> rides, int nbSteps) {
         for (int i = 1; i <= nbSteps; i++) {
+            excludeUnreachableRides(rides, i, nbSteps);
             if (i % 1000 == 0) System.out.println(i);
             vehicles.stream()
                     .filter(Vehicle::isOnRide)
@@ -30,16 +31,28 @@ public class VehicleController {
             Iterator<Ride> iterator = rides.iterator();
             while (iterator.hasNext()) {
                 Ride ride = iterator.next();
-                ride.decrementTurn();
-                Vehicle vehicle = determineClosestFreeVehicle(ride, vehicles);
-                if (vehicle != null) {
-                    vehicle.setCurrentRide(ride);
-                    iterator.remove();
+                if (!ride.isExcluded()) {
+                    ride.decrementTurn();
+                    Vehicle vehicle = determineClosestFreeVehicle(ride, vehicles);
+                    if (vehicle != null) {
+                        vehicle.setCurrentRide(ride);
+                        iterator.remove();
+                    }
                 }
             }
         }
 
         return vehicles;
+    }
+
+    private void excludeUnreachableRides(List<Ride> rides, int currentStep, int totalStep) {
+        for (Ride r: rides) {
+            if (!r.isExcluded()) {
+                if (currentStep + Utils.getDistance(r.getStart(), r.getStop()) >= totalStep) {
+                    r.setExcluded(true);
+                }
+            }
+        }
     }
 
     private Vehicle determineClosestFreeVehicle(Ride ride, List<Vehicle> vehicles) {
