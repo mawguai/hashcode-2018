@@ -119,7 +119,7 @@ public class Vehicle {
     public String resultString(){
         String result = id + "";
         for(Ride ride : treatedRides){
-            result += " " + ride.getRideNb();
+            result += " " + ride.getId();
         }
         return result;
     }
