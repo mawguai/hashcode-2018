@@ -3,18 +3,28 @@ package fr.xebia.hashcode.model;
 import fr.xebia.hashcode.utils.Utils;
 
 public class Ride {
+    private int rideNb;
     private Position start;
     private Position stop;
     private int earliestStart;
     private int latestFinish;
     private Integer distance;
 
-    public Ride(Position start, Position stop, int earliestStart, int latestFinish) {
+    public Ride(int rideNb, Position start, Position stop, int earliestStart, int latestFinish) {
+        this.rideNb = rideNb;
         this.start = start;
         this.stop = stop;
         this.earliestStart = earliestStart;
         this.latestFinish = latestFinish;
         this.computeDistance();
+    }
+
+    public int getRideNb() {
+        return rideNb;
+    }
+
+    public void setRideNb(int rideNb) {
+        this.rideNb = rideNb;
     }
 
     public Integer getDistance() {
